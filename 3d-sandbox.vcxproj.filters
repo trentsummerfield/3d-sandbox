@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{d59c60e5-77a9-48bb-8cf6-bf952e0a28b7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\OpenGLGeo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="code\App.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Camera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\gl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Loader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\mat4.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\mat4_invertable.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\OpenGLGeo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\platform.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Shader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\vec3.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\vec4.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\grid.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\gooch_fragment.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\gooch_vertex.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\text_vertex.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\text_fragment.glsl" />
+    <None Include="shaders\grid_fragment.glsl" />
+    <None Include="shaders\grid_vertex.glsl" />
+  </ItemGroup>
+</Project>
