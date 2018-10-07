@@ -33,8 +33,9 @@ $ ./3d-sandbox assets/bunny.obj oren-nayar
 Shaders
 -------
 
-|| shader name || description ||
-| gooch | A simple shader derived from one presented in Real-Time Rendering, Fourth Edition, Akenine-Moller, Haines, Hoffman |
+| shader name | description |
+-----------------------------
+| gooch       | A simple shader derived from one presented in Real-Time Rendering, Fourth Edition, Akenine-Moller, Haines, Hoffman |
 | oren-nayar | A diffuse shader with more physically correct properties |
 
 License
