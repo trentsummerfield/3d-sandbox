@@ -2,7 +2,7 @@
 
 A simple sandbox to view models and play with shaders. Written in modern C++.
 
-![](examples/3d-sandbox-bunny.gif)
+![](https://raw.githubusercontent.com/trentsummerfield/3d-sandbox/master/examples/3d-viewer-bunny.gif)
 
 Dependencies
 ------------
