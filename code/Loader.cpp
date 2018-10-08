@@ -81,15 +81,18 @@ load_obj_file(std::string const& filename)
         return {};
     }
 
-    std::vector<float> real_normals{};
-    real_normals.resize(vertices.size());
-    for (size_t i = 0; i < indices.size(); i++) {
-        auto vi = indices[i] * 3;
-        auto ni = normal_indices[i] * 3;
-        real_normals[vi] = normals[ni];
-        real_normals[vi + 1] = normals[ni + 1];
-        real_normals[vi + 2] = normals[ni + 2];
+    if (normal_indices != indices) {
+        std::vector<float> real_normals{};
+        real_normals.resize(vertices.size());
+        for (size_t i = 0; i < indices.size(); i++) {
+            auto vi = indices[i] * 3;
+            auto ni = normal_indices[i] * 3;
+            real_normals[vi] = normals[ni];
+            real_normals[vi + 1] = normals[ni + 1];
+            real_normals[vi + 2] = normals[ni + 2];
+        }
+        normals = std::move(real_normals);
     }
 
-    return std::make_optional<OpenGLGeo>(vertices, real_normals, indices);
+    return std::make_optional<OpenGLGeo>(vertices, normals, indices);
 }
