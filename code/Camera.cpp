@@ -1,13 +1,6 @@
 #include "Camera.h"
 #include "vec4.h"
 
-Camera::Camera()
-  : offset{ 0.f }
-  , pitch{ 0.f }
-  , orbit{ 0.f }
-  , dolly{ 3.f }
-{}
-
 mat4_invertable
 Camera::world_to_camera_matrix() const
 {

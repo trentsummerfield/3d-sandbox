@@ -6,11 +6,7 @@
 OpenGLGeo::OpenGLGeo(std::vector<float> vertices,
                      std::vector<float> normals,
                      std::vector<uint32_t> indices)
-  : vao(0)
-  , vbo(0)
-  , nbo(0)
-  , ebo(0)
-  , index_count(indices.size())
+  : index_count(indices.size())
 {
     vec3 max{ std::numeric_limits<float>::lowest() };
     vec3 min{ std::numeric_limits<float>::max() };
@@ -74,9 +70,9 @@ OpenGLGeo::OpenGLGeo(OpenGLGeo&& other) noexcept
   , vbo(other.vbo)
   , nbo(other.nbo)
   , ebo(other.ebo)
-  , index_count(other.index_count)
   , center(std::move(other.center))
   , dimensions(std::move(other.dimensions))
+  , index_count(other.index_count)
 {
     other.vao = 0;
     other.vbo = 0;

@@ -7,8 +7,9 @@ App::App(Shader shader)
   , grid{ make_grid() }
   , grid_shader{ load_shader("grid").value() }
 {
-    camera.pitch_by(degrees_to_radians(-30.f));
-    camera.offset_y_by(0.6f);
+    camera.set_pitch(degrees_to_radians(-30.f));
+    camera.set_offset({ 0.f, 0.6f, 0.f });
+    camera.set_dolly(3.f);
 
     glEnable(GL_DEPTH_TEST);
 }

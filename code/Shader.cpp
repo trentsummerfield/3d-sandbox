@@ -8,7 +8,7 @@
 #include <string>
 
 Shader::Shader(GLuint program)
-  : program(program)
+  : program{ program }
 {}
 
 Shader::Shader(Shader&& other) noexcept
@@ -41,7 +41,7 @@ std::optional<GLuint>
 compile_shader(std::string const& source, GLenum shader_type)
 {
     auto cstr = source.c_str();
-    GLuint shader = glCreateShader(shader_type);
+    auto shader = glCreateShader(shader_type);
     glShaderSource(shader, 1, &cstr, nullptr);
     glCompileShader(shader);
     GLint status;

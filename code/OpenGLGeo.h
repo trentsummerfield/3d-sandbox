@@ -9,13 +9,16 @@
 class OpenGLGeo
 {
   private:
-    GLuint vao, vbo, nbo, ebo;
+    GLuint vao{ 0 };
+    GLuint vbo{ 0 };
+    GLuint nbo{ 0 };
+    GLuint ebo{ 0 };
+    vec3 center{ 0.0 };
+    vec3 dimensions{ 0.0 };
+
     GLsizei index_count;
-    vec3 center;
-    vec3 dimensions;
 
   public:
-    OpenGLGeo();
     OpenGLGeo(std::vector<float> vertices,
               std::vector<float> normals,
               std::vector<uint32_t> indices);

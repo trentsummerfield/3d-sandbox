@@ -30,6 +30,13 @@ class vec3
         y = v.y;
         z = v.z;
     }
+
+    void operator+=(vec3 const& v)
+    {
+        x += v.x;
+        y += v.y;
+        z += v.z;
+    }
 };
 
 inline vec3
