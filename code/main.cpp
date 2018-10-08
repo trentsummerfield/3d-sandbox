@@ -97,7 +97,7 @@ main(int argc, char* argv[])
         return 1;
     }
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-        std::cout << "SDL Error: " << SDL_GetError();
+        std::cerr << "SDL Error: " << SDL_GetError();
     }
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
                         SDL_GL_CONTEXT_PROFILE_CORE);
@@ -117,13 +117,13 @@ main(int argc, char* argv[])
 
     auto shader = load_shader(argv[2]);
     if (!shader) {
-        std::cout << "Failed to load shader" << std::endl;
+        std::cerr << "Failed to load shader" << std::endl;
         return 1;
     }
     auto filename = argv[1];
     auto geo = load_obj_file(filename);
     if (!geo) {
-        std::cout << "Failed to load " << filename << std::endl;
+        std::cerr << "Failed to load " << filename << std::endl;
     }
 
     if (shader && geo) {

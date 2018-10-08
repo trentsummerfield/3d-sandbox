@@ -77,7 +77,7 @@ load_obj_file(std::string const& filename)
             }
         }
     } else {
-        std::cout << "Couldn't open file " << filename << std::endl;
+        std::cerr << "Couldn't open file " << filename << std::endl;
         return {};
     }
 

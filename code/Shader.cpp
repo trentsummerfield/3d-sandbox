@@ -51,11 +51,11 @@ compile_shader(std::string const& source, GLenum shader_type)
     if (log_length > 0) {
         std::string log(static_cast<size_t>(log_length), '\0');
         glGetShaderInfoLog(shader, log_length, nullptr, log.data());
-        std::cout << log << std::endl;
+        std::cerr << log << std::endl;
     }
 
     if (status != GL_TRUE) {
-        std::cout << "Shader compilation failed" << std::endl;
+        std::cerr << "Shader compilation failed" << std::endl;
         glDeleteShader(shader);
         return {};
     }
