@@ -19,9 +19,5 @@ class Shader
     Shader(Shader&) = delete;
 
     void use_program(mat4 const& projection_matrix, vec3 camera_position);
-
     void set_model_matrix(mat4 const& model_matrix);
 };
-
-std::optional<Shader>
-load_shader(std::string const& shader_name);

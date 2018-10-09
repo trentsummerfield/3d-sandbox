@@ -14,6 +14,7 @@
 #include "Loader.h"
 #include "OpenGLGeo.h"
 #include "Shader.h"
+#include "ShaderManager.h"
 #include "platform.h"
 
 using hr_clock = std::chrono::high_resolution_clock;
@@ -115,7 +116,8 @@ main(int argc, char* argv[])
     glewExperimental = GL_TRUE;
     glewInit();
 
-    auto shader = load_shader(argv[2]);
+    auto shader_manager = std::make_shared<ShaderManager>();
+    auto shader = shader_manager->load_shader(argv[2]);
     if (!shader) {
         std::cerr << "Failed to load shader" << std::endl;
         return 1;
@@ -128,7 +130,7 @@ main(int argc, char* argv[])
 
     if (shader && geo) {
         platform platform = {};
-        auto app = App{ std::move(shader.value()) };
+        auto app = App{ shader_manager, shader.value() };
         app.set_subject(std::move(geo.value()));
         SDL_Event event;
         auto start_time = hr_clock::now();

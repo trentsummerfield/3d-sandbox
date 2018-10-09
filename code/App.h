@@ -1,9 +1,11 @@
 #pragma once
+#include <memory>
 #include <optional>
 
 #include "Camera.h"
 #include "OpenGLGeo.h"
 #include "Shader.h"
+#include "ShaderManager.h"
 #include "platform.h"
 
 class App
@@ -11,15 +13,16 @@ class App
   private:
     Camera camera;
 
-    Shader shader;
+    std::shared_ptr<ShaderManager> shader_manager;
 
     OpenGLGeo grid;
-    Shader grid_shader;
+    ShaderHandle grid_shader_handle;
 
+    ShaderHandle shader_handle;
     std::optional<OpenGLGeo> subject;
 
   public:
-    explicit App(Shader shader);
+    App(std::shared_ptr<ShaderManager> shader_manager, ShaderHandle shader);
     App(App&) = delete;
     App(App&&) = default;
     ~App() = default;

@@ -2,10 +2,11 @@
 #include "Loader.h"
 #include "grid.h"
 
-App::App(Shader shader)
-  : shader{ std::move(shader) }
+App::App(std::shared_ptr<ShaderManager> shader_manager, ShaderHandle shader)
+  : shader_manager{ shader_manager }
   , grid{ make_grid() }
-  , grid_shader{ load_shader("grid").value() }
+  , grid_shader_handle{ shader_manager->load_shader("grid").value() }
+  , shader_handle{ shader }
 {
     camera.set_pitch(degrees_to_radians(-30.f));
     camera.set_offset({ 0.f, 0.6f, 0.f });
@@ -53,13 +54,18 @@ App::step(platform const& platform)
     glViewport(0, 0, platform.window.width, platform.window.height);
     glClearColor(0.0f, 0.17f, 0.21f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    if (subject) {
-        shader.use_program(projection, camera_position);
-        shader.set_model_matrix(
+
+    auto shader = shader_manager->get_shader(shader_handle);
+    if (subject && shader) {
+        shader->use_program(projection, camera_position);
+        shader->set_model_matrix(
           mat4::rotate_around_y(platform.time.seconds_since_starting));
         subject.value().draw();
     }
 
-    grid_shader.use_program(projection, camera_position);
-    grid.draw();
+    auto grid_shader = shader_manager->get_shader(grid_shader_handle);
+    if (grid_shader) {
+        grid_shader->use_program(projection, camera_position);
+        grid.draw();
+    }
 }
