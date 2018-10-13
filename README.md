@@ -6,28 +6,35 @@ A simple sandbox to view models and play with shaders. Written in modern C++.
 
 Dependencies
 ------------
+ - [CMAKE](https://cmake.org/)
  - [SDL2](https://libsdl.org)
  - [GLEW](http://glew.sourceforge.net/)
 
-The depenedencies for windows are bundled. On linux you should fetch them using your package manager of choice.
+On windows cmake will install and compile the dependencies. You should use the appropriate package manager on OSX and Windows.
 
 Installation
 ------------
 
-The code compiles and runs on Windows and Linux. 
-A solution for VS2017 is included. 
-The file `build.sh` can be used on linux. 
+The code has been tested on Windows and Linux. 
+
+Assuming cmake is installed. The code can be compiled as follows:
+```
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+```
 
 Usage
 -----
 
 ```
-$ ./3d-sandbox OBJ_FILE SHADER_NAME
+$ ./build/bin/3d-sandbox OBJ_FILE SHADER_NAME
 ```
 
 For example the gif above is the output of: 
 ```
-$ ./3d-sandbox assets/bunny.obj oren-nayar
+$ ./build/bin/3d-sandbox assets/bunny.obj oren-nayar
 ```
 
 Shaders
