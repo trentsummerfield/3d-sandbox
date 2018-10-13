@@ -1,5 +1,5 @@
 include(ExternalProject)
-find_package(sdl2 2.0 QUIET)
+find_package(SDL2 2.0 QUIET)
 
 if(SDL2_FOUND)
     message(STATUS "Found SDL2")

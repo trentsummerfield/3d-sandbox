@@ -8,6 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE bin)
 
+set(OpenGL_GL_PREFERENCE GLVND)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(glew)
 include(sdl2)
@@ -26,12 +27,19 @@ add_executable(3d-sandbox
     src/Shader.cpp
     src/ShaderManager.cpp
 )
-add_dependencies(3d-sandbox glew sdl2)
 target_link_libraries(3d-sandbox 
     ${GLEW_LIBRARIES} 
-    ${SDL2_LIBRARIES} 
     ${OPENGL_LIBRARIES}
 )
+if(TARGET SDL2::SDL2)
+target_link_libraries(3d-sandbox
+    SDL2::SDL2
+)
+else()
+target_link_libraries(3d-sandbox
+    ${SDL2_LIBRARIES}
+)
+endif()
 
 if(WIN32)
 	add_definitions(-D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)

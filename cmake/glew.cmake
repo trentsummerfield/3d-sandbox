@@ -1,5 +1,5 @@
 include(ExternalProject)
-find_package(glew 2.1 QUIET)
+find_package(GLEW 2.1 QUIET)
 
 if(GLEW_FOUND)
     message(STATUS "Found GLEW")

@@ -95,7 +95,7 @@ constexpr gsl::span<char *>
 to_span(int argc, char **argv)
 {
 	using index_type = gsl::span<char *>::index_type;
-	return { argv, gsl::narrow<index_type, int>(argc) };
+	return { argv, static_cast<index_type>(argc) };
 }
 
 int
