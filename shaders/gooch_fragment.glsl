@@ -12,13 +12,13 @@ vec3 cool = vec3(0.0, 0.0, 0.55) + 0.25*surface;
 vec3 warm = vec3(0.3, 0.3, 0.0) + 0.25*surface;
 vec3 highlight = vec3(2, 2, 2);
 
-vec3 light_position = vec3(0.0, 3.0, 1.0);
+vec3 light_position = vec3(0.0, 2.0, 1.0);
 
 
 vec3 lit(vec3 l, vec3 n, vec3 v)
 {
     vec3 r_l = reflect(-l, n);
-    float s = clamp(100.0 * dot(r_l, v) - 97.0, 0.0, 1.0);
+    float s = clamp(100.0 * dot(r_l, v) - 98.0, 0.0, 1.0);
     return mix(warm, highlight, s);	
 }
 
