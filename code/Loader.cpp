@@ -22,7 +22,7 @@ load_obj_file(std::string const& filename)
                 auto prefix = line.substr(0, 2);
                 if (prefix == "v ") {
                     float x, y, z;
-                    auto matched =
+                    const auto matched =
                       sscanf(line.c_str(), "v %f %f %f", &x, &y, &z);
                     if (matched != 3) {
                         std::cerr
@@ -35,7 +35,7 @@ load_obj_file(std::string const& filename)
                     vertices.push_back(z);
                 } else if (prefix == "vn") {
                     float x, y, z;
-                    auto matched =
+                    const auto matched =
                       sscanf(line.c_str(), "vn %f %f %f", &x, &y, &z);
                     if (matched != 3) {
                         std::cerr
@@ -50,7 +50,7 @@ load_obj_file(std::string const& filename)
                     int v1, t1, n1;
                     int v2, t2, n2;
                     int v3, t3, n3;
-                    auto matched = sscanf(line.c_str(),
+					const auto matched = sscanf(line.c_str(),
                                           "f %d/%d/%d %d/%d/%d %d/%d/%d",
                                           &v1,
                                           &t1,

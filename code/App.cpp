@@ -47,13 +47,13 @@ App::step(platform const& platform)
         shader_manager->reload_shaders();
     }
 
-    auto width = static_cast<float>(platform.window.width);
-    auto height = static_cast<float>(platform.window.height);
-    auto perspective = mat4::perspective(
+    const auto width = static_cast<float>(platform.window.width);
+    const auto height = static_cast<float>(platform.window.height);
+    const auto perspective = mat4::perspective(
       degrees_to_radians(45.f), width / height, 0.01f, 1000.f);
-    auto projection =
+    const auto projection =
       perspective * camera.world_to_camera_matrix().forward_ref();
-    auto camera_position = camera.position();
+    const auto camera_position = camera.position();
 
     glViewport(0, 0, platform.window.width, platform.window.height);
     glClearColor(0.0f, 0.17f, 0.21f, 1.0f);

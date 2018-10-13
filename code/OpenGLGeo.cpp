@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <iostream>
+using size_type = std::vector<float>::size_type;
 
 OpenGLGeo::OpenGLGeo(std::vector<float> vertices,
                      std::vector<float> normals,
@@ -10,10 +11,10 @@ OpenGLGeo::OpenGLGeo(std::vector<float> vertices,
 {
     vec3 max{ std::numeric_limits<float>::lowest() };
     vec3 min{ std::numeric_limits<float>::max() };
-    for (int i = 0; i < vertices.size() / 3; i++) {
-        float x = vertices[i];
-        float y = vertices[i + 1];
-        float z = vertices[i + 2];
+    for (size_type i = 0; i < vertices.size() / 3; i++) {
+        const auto x = vertices[i];
+		const auto y = vertices[i + 1];
+		const auto z = vertices[i + 2];
 
         min.x = std::min(min.x, x);
         max.x = std::max(max.x, x);
@@ -102,6 +103,6 @@ OpenGLGeo::draw() const
 mat4
 OpenGLGeo::unit_matrix() const
 {
-    float scale = 1.f / std::max({ dimensions.x, dimensions.y, dimensions.z });
+    const auto scale = 1.f / std::max({ dimensions.x, dimensions.y, dimensions.z });
     return mat4::scale(scale) * mat4::translate(-center);
 }

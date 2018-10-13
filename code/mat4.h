@@ -18,11 +18,11 @@ class mat4
     mat4(mat4&&) = default;
     ~mat4() = default;
 
-    float* as_ptr() { return this->data.data(); }
+    float* as_ptr() { return data.data(); }
 
-    float const* as_const_ptr() const { return this->data.data(); }
+    float const* as_const_ptr() const { return data.data(); }
 
-    float operator[](std::size_t idx) const { return this->data[idx]; }
+    float operator[](size_t idx) const { return data[idx]; }
 
     mat4 transpose() const
     {
@@ -227,8 +227,8 @@ inline vec4 operator*(mat4 const& a, vec4 const& b)
     };
 }
 
-inline float
-degrees_to_radians(float degrees)
+constexpr inline float
+degrees_to_radians(float degrees) noexcept
 {
     return (degrees * (float)M_PI) / 180.f;
 }
