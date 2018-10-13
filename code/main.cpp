@@ -72,6 +72,9 @@ handle_event(SDL_Event event, platform& platform)
                 case SDLK_RALT: {
                     press(platform.keyboard.alt);
                 } break;
+                case SDLK_r: {
+                    press(platform.keyboard.r);
+                } break;
                 case SDLK_ESCAPE:
                     return false;
             }
@@ -81,6 +84,9 @@ handle_event(SDL_Event event, platform& platform)
                 case SDLK_LALT:
                 case SDLK_RALT: {
                     release(platform.keyboard.alt);
+                } break;
+                case SDLK_r: {
+                    release(platform.keyboard.r);
                 } break;
             }
         } break;

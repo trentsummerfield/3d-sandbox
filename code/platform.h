@@ -25,6 +25,7 @@ struct platform
     struct
     {
         button alt;
+        button r;
     } keyboard;
     struct
     {
@@ -50,6 +51,7 @@ reset_platform(platform& platform)
     reset_button(platform.mouse.right_button);
 
     reset_button(platform.keyboard.alt);
+    reset_button(platform.keyboard.r);
 }
 
 inline void

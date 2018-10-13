@@ -43,6 +43,10 @@ App::step(platform const& platform)
                            platform.mouse.delta_y);
     }
 
+    if (platform.keyboard.r.pressed) {
+        shader_manager->reload_shaders();
+    }
+
     auto width = static_cast<float>(platform.window.width);
     auto height = static_cast<float>(platform.window.height);
     auto perspective = mat4::perspective(

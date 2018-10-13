@@ -36,14 +36,15 @@ struct ShaderHandleHash
     }
 };
 
-using shader_map =
-  std::unordered_map<ShaderHandle, std::shared_ptr<Shader>, ShaderHandleHash>;
+using ShaderValue = std::pair<std::string, std::shared_ptr<Shader>>;
+using ShaderMap =
+  std::unordered_map<ShaderHandle, ShaderValue, ShaderHandleHash>;
 
 class ShaderManager
 {
   private:
     uint32_t next_handle{ 1 };
-    shader_map shaders;
+    ShaderMap shaders;
 
   public:
     ShaderManager() = default;
@@ -53,4 +54,5 @@ class ShaderManager
 
     std::optional<ShaderHandle> load_shader(std::string const& shader_name);
     std::shared_ptr<Shader> get_shader(ShaderHandle handle);
+    void reload_shaders();
 };

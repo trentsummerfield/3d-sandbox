@@ -38,9 +38,9 @@ load_obj_file(std::string const& filename)
                     auto matched =
                       sscanf(line.c_str(), "vn %f %f %f", &x, &y, &z);
                     if (matched != 3) {
-                        std::cerr <<
-                          R"(Expected a line like "vn f f f" but got ")" << line
-                                  << R"(")" << std::endl;
+                        std::cerr
+                          << R"(Expected a line like "vn f f f" but got ")"
+                          << line << R"(")" << std::endl;
                         return {};
                     }
                     normals.push_back(x);

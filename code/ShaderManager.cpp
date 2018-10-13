@@ -83,7 +83,7 @@ ShaderManager::load_shader(std::string const& shader_name)
     if (shader) {
         auto shader_ptr = std::make_shared<Shader>(std::move(shader.value()));
         ShaderHandle handle{ next_handle++ };
-        shaders.emplace(handle, shader_ptr);
+        shaders.emplace(handle, std::make_pair(shader_name, shader_ptr));
         return handle;
     }
     return {};
@@ -92,5 +92,27 @@ ShaderManager::load_shader(std::string const& shader_name)
 std::shared_ptr<Shader>
 ShaderManager::get_shader(ShaderHandle handle)
 {
-    return this->shaders.at(handle);
+    return shaders.at(handle).second;
+}
+
+void
+ShaderManager::reload_shaders()
+{
+    ShaderMap map{};
+    std::cout << "Reloading shaders..." << std::endl;
+    for (auto& entry : shaders) {
+        auto handle = entry.first;
+        auto value = entry.second;
+        auto shader_name = value.first;
+        std::cout << "Realoading " << shader_name << std::endl;
+        auto new_shader = load_shader_from_file(shader_name);
+        if (new_shader) {
+            auto shader_ptr =
+              std::make_shared<Shader>(std::move(new_shader.value()));
+            map.emplace(handle, std::make_pair(shader_name, shader_ptr));
+        } else {
+            map.emplace(handle, std::make_pair(shader_name, value.second));
+        }
+    }
+    shaders = std::move(map);
 }
