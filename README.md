@@ -46,6 +46,7 @@ Shaders
 --------------|--------------
 | gooch       | A simple shader derived from one presented in Real-Time Rendering, Fourth Edition, Akenine-Moller, Haines, Hoffman |
 | oren-nayar | A diffuse shader with more physically correct properties |
+| disolve | A shader which causes the object to disolve over time |
 
 License
 -------
