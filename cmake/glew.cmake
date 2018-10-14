@@ -3,6 +3,7 @@ find_package(GLEW 2.1 QUIET)
 
 if(GLEW_FOUND)
     message(STATUS "Found GLEW")
+    add_library(glew INTERFACE)
 else()
 if(WIN32)
     message(STATUS "GLEW not found - will build from source")

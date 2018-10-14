@@ -3,6 +3,7 @@ find_package(SDL2 2.0 QUIET)
 
 if(SDL2_FOUND)
     message(STATUS "Found SDL2")
+    add_library(sdl2 INTERFACE)
 else()
 if(WIN32)
     message(STATUS "SDL2 not found - will build from source")

@@ -27,6 +27,7 @@ add_executable(3d-sandbox
     src/Shader.cpp
     src/ShaderManager.cpp
 )
+add_dependencies(3d-sandbox glew sdl2)
 target_link_libraries(3d-sandbox 
     ${GLEW_LIBRARIES} 
     ${OPENGL_LIBRARIES}
