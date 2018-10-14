@@ -10,7 +10,7 @@ Dependencies
  - [SDL2](https://libsdl.org)
  - [GLEW](http://glew.sourceforge.net/)
 
-On windows cmake will install and compile the dependencies. You should use the appropriate package manager on OSX and Windows.
+On windows cmake will install and compile the dependencies. On OSX and Linux you should use your favourite package manager to install these dependencies first.
 
 Installation
 ------------
@@ -28,9 +28,11 @@ cmake --build . --config Release
 Usage
 -----
 
+
 ```
 $ ./build/bin/3d-sandbox OBJ_FILE SHADER_NAME
 ```
+Note: The binary needs to be executed in the working directory containing the directory called `shaders`.
 
 For example the gif above is the output of: 
 ```
