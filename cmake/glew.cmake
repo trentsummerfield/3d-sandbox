@@ -30,13 +30,13 @@ if(WIN32)
     )
 
     ExternalProject_Get_Property(glew INSTALL_DIR)
+
     set(GLEW_INCLUDE_DIRS ${INSTALL_DIR}/include)
-    set(GLEW_LIBRARIES ${INSTALL_DIR}/lib/glew32.lib)
+    set(GLEW_LIBRARIES ${INSTALL_DIR}/lib/glew32$<$<CONFIG:Debug>:d>.lib)
     add_custom_command(
         TARGET glew POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-                ${INSTALL_DIR}/bin/glew32.dll
-                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/glew32.dll)
+        COMMAND ${CMAKE_COMMAND} -E copy ${INSTALL_DIR}/bin/glew32$<$<CONFIG:Debug>:d>.dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/glew32$<$<CONFIG:Debug>:d>.dll
+	)
 endif()
 endif()
 

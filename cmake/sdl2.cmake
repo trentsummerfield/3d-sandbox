@@ -20,13 +20,13 @@ if(WIN32)
     )
 
     ExternalProject_Get_Property(sdl2 INSTALL_DIR)
+
     set(SDL2_INCLUDE_DIRS ${INSTALL_DIR}/include)
-    set(SDL2_LIBRARIES ${INSTALL_DIR}/lib/SDL2d.lib ${INSTALL_DIR}/lib/SDL2maind.lib)
+    set(SDL2_LIBRARIES ${INSTALL_DIR}/lib/SDL2$<$<CONFIG:Debug>:d>.lib ${INSTALL_DIR}/lib/SDL2main$<$<CONFIG:Debug>:d>.lib)
     add_custom_command(
         TARGET sdl2 POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-                ${INSTALL_DIR}/bin/SDL2.dll
-                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/SDL2.dll)
+        COMMAND ${CMAKE_COMMAND} -E copy ${INSTALL_DIR}/bin/SDL2$<$<CONFIG:Debug>:d>.dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/SDL2$<$<CONFIG:Debug>:d>.dll
+	)
 endif()
 endif()
 
