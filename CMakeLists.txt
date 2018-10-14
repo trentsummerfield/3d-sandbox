@@ -15,7 +15,7 @@ include(sdl2)
 include(opengl)
 
 
-include_directories(${GLEW_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS})
+include_directories("src" ${GLEW_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS})
 add_executable(3d-sandbox 
     src/App.cpp
     src/Camera.cpp
