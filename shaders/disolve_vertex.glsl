@@ -11,8 +11,8 @@ out vec3 v_normal;
 
 void main()
 {
-    vec4 world_position = vec4(position, 1.0);
+    vec4 world_position = model * vec4(position, 1.0);
     v_position = world_position.xyz;
-    v_normal = (vec4(normalize(normal), 0.0)).xyz;
+    v_normal = (model * vec4(normalize(normal), 0.0)).xyz;
     gl_Position = projection * world_position;
 }
