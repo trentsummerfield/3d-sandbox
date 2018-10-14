@@ -11,7 +11,6 @@
 #include "Shader.h"
 #include "ShaderManager.h"
 #include "platform.h"
-#include "gsl.hpp"
 
 using hr_clock = std::chrono::high_resolution_clock;
 using float_seconds = std::chrono::duration<float>;
@@ -91,19 +90,11 @@ handle_event(SDL_Event event, platform& platform)
     return true;
 }
 
-constexpr gsl::span<char *>
-to_span(int argc, char **argv)
-{
-	using index_type = gsl::span<char *>::index_type;
-	return { argv, static_cast<index_type>(argc) };
-}
-
 int
-main(int argc, char **argv)
+main(int argc, char *argv[])
 {
-	const auto args = to_span(argc, argv);
-    if (args.length() < 3) {
-        std::cerr << "Usage: " << args[0] << " <obj filename> <shader name>"
+    if (argc < 3) {
+        std::cerr << "Usage: " << argv[0] << " <obj filename> <shader name>"
                   << std::endl;
         return 1;
     }
@@ -127,12 +118,12 @@ main(int argc, char **argv)
     glewInit();
 
     auto shader_manager = std::make_shared<ShaderManager>();
-    auto shader = shader_manager->load_shader(args[2]);
+    auto shader = shader_manager->load_shader(argv[2]);
     if (!shader) {
         std::cerr << "Failed to load shader" << std::endl;
         return 1;
     }
-    auto filename = args[1];
+    auto filename = argv[1];
     auto geo = load_obj_file(filename);
     if (!geo) {
         std::cerr << "Failed to load " << filename << std::endl;

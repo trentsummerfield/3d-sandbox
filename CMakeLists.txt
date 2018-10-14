@@ -19,11 +19,10 @@ include_directories(${GLEW_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS})
 add_executable(3d-sandbox 
     src/App.cpp
     src/Camera.cpp
-    src/grid.cpp
+    src/Grid.cpp
     src/Loader.cpp
     src/main.cpp
     src/OpenGLGeo.cpp
-    src/platform.cpp
     src/Shader.cpp
     src/ShaderManager.cpp
 )
@@ -44,5 +43,5 @@ endif()
 
 if(WIN32)
 	add_definitions(-D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
-	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}")
+    set_target_properties(3d-sandbox PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
 endif()

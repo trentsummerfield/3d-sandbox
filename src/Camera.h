@@ -1,7 +1,7 @@
 #pragma once
 
-#include "mat4_invertable.h"
-#include "vec3.h"
+#include "algebra/mat4_invertable.h"
+#include "algebra/vec3.h"
 
 class Camera
 {

@@ -1,4 +1,4 @@
-#include "grid.h"
+#include "Grid.h"
 
 OpenGLGeo
 make_grid()
@@ -55,7 +55,6 @@ make_grid()
     verts.push_back(0.f);
     verts.push_back(1.f);
 
-    //
     verts.push_back(1.f);
     verts.push_back(0.f);
     verts.push_back(0.f + half_width);

@@ -3,7 +3,7 @@
 #include <array>
 #include <cmath>
 
-#include "vec4.h"
+#include "algebra/vec4.h"
 
 class mat4
 {

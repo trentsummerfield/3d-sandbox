@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "vec4.h"
+#include "algebra/vec4.h"
 
 mat4_invertable
 Camera::world_to_camera_matrix() const

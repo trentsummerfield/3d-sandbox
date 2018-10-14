@@ -1,6 +1,6 @@
 #include "App.h"
 #include "Loader.h"
-#include "grid.h"
+#include "Grid.h"
 
 App::App(std::shared_ptr<ShaderManager> shader_manager, ShaderHandle shader)
   : shader_manager{ shader_manager }

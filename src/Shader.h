@@ -4,7 +4,7 @@
 
 #include <GL/glew.h>
 
-#include "mat4.h"
+#include "algebra/mat4.h"
 
 class Shader
 {
@@ -13,10 +13,9 @@ class Shader
 
   public:
     explicit Shader(GLuint program);
+    Shader(Shader&) = delete;
     Shader(Shader&&) noexcept;
     ~Shader();
-
-    Shader(Shader&) = delete;
 
     void use_program(mat4 const& projection_matrix, vec3 camera_position);
     void set_model_matrix(mat4 const& model_matrix);

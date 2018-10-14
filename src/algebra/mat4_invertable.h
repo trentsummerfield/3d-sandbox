@@ -1,7 +1,7 @@
 #pragma once
 
-#include "mat4.h"
-#include "vec3.h"
+#include "algebra/mat4.h"
+#include "algebra/vec3.h"
 
 class mat4_invertable
 {
