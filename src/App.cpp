@@ -61,7 +61,7 @@ App::step(platform const& platform)
 
     auto shader = shader_manager->get_shader(shader_handle);
     if (subject && shader) {
-        shader->use_program(projection, camera_position);
+        shader->use_program(projection, camera_position, platform.time.seconds_since_starting);
         shader->set_model_matrix(
           mat4::rotate_around_y(platform.time.seconds_since_starting));
         subject.value().draw();
@@ -69,7 +69,7 @@ App::step(platform const& platform)
 
     auto grid_shader = shader_manager->get_shader(grid_shader_handle);
     if (grid_shader) {
-        grid_shader->use_program(projection, camera_position);
+        grid_shader->use_program(projection, camera_position, platform.time.seconds_since_starting);
         grid.draw();
     }
 }
