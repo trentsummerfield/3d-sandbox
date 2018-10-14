@@ -50,11 +50,10 @@ Shaders
 License
 -------
 
-SDL2 is licensed under the [zlib license](https://www.libsdl.org/license.php)
+SDL2 is licensed under the [zlib license](https://www.libsdl.org/license.php)  
 GLEW is licensed under the [MIT license](https://github.com/nigels-com/glew#copyright-and-licensing)
 
-This project is available under the unlicense.
-
+This project is available under the UNLICENSE.
 ```
 This is free and unencumbered software released into the public domain.
 
