@@ -1,4 +1,4 @@
-#include <chrono>
+#include <stdint.h>
 #include <iostream>
 #include <memory>
 
@@ -12,17 +12,11 @@
 #include "ShaderManager.h"
 #include "platform.h"
 
-using hr_clock = std::chrono::high_resolution_clock;
-using float_seconds = std::chrono::duration<float>;
-
 float
-seconds_since(hr_clock::time_point time_point)
+seconds_since(uint64_t time_point)
 {
-    auto duration_since_time_point = hr_clock::now() - time_point;
-    return
-
-      std::chrono::duration_cast<float_seconds>(duration_since_time_point)
-        .count();
+    auto duration = SDL_GetPerformanceCounter() - time_point;
+    return (float)duration / (float)SDL_GetPerformanceFrequency();
 }
 
 bool
@@ -134,22 +128,20 @@ main(int argc, char *argv[])
         auto app = App{ shader_manager, shader.value() };
         app.set_subject(std::move(geo.value()));
 		SDL_Event event = {};
-        auto start_time = hr_clock::now();
-        auto frame_start_time = hr_clock::now();
+        auto start_time = SDL_GetPerformanceCounter();
+        auto frame_start_time = start_time;
         bool running = true;
         while (running) {
             reset_platform(platform);
-            SDL_GL_GetDrawableSize(
-              window, &platform.window.width, &platform.window.height);
+            SDL_GL_GetDrawableSize(window, &platform.window.width, &platform.window.height);
 
             while (SDL_PollEvent(&event) != 0) {
                 running = handle_event(event, platform);
             }
 
             platform.time.seconds_since_starting = seconds_since(start_time);
-            platform.time.seconds_since_last_frame =
-              seconds_since(frame_start_time);
-            frame_start_time = hr_clock::now();
+            platform.time.seconds_since_last_frame = seconds_since(frame_start_time);
+            frame_start_time = SDL_GetPerformanceCounter();
 
             app.step(platform);
             SDL_GL_SwapWindow(window);
