@@ -21,6 +21,7 @@ struct platform
         button left_button;
         button middle_button;
         button right_button;
+        float wheel;
     } mouse;
     struct
     {
@@ -44,8 +45,9 @@ reset_button(button& button)
 inline void
 reset_platform(platform& platform)
 {
-    platform.mouse.delta_x = 0;
-    platform.mouse.delta_y = 0;
+    platform.mouse.delta_x = 0.f;
+    platform.mouse.delta_y = 0.f;
+    platform.mouse.wheel = 0.f;
     reset_button(platform.mouse.left_button);
     reset_button(platform.mouse.middle_button);
     reset_button(platform.mouse.right_button);

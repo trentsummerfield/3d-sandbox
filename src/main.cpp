@@ -55,6 +55,9 @@ handle_event(SDL_Event event, platform& platform)
                 } break;
             }
         } break;
+        case SDL_MOUSEWHEEL: {
+            platform.mouse.wheel = event.wheel.y;
+        } break;
         case SDL_KEYDOWN: {
             switch (event.key.keysym.sym) {
                 case SDLK_LALT:

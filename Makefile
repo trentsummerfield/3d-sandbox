@@ -2,6 +2,7 @@ CCX = clang++
 CC = clang
 
 CFLAGS += -O2
+CFLAGS += -c
 CFLAGS += --std=c11
 CFLAGS += -Isrc/
 
@@ -15,4 +16,6 @@ LFLAGS += -lGLEW
 LFLAGS += -lm
 
 all:
-	${CCX} ${CXXFLAGS} src/main.c src/App.cpp src/Camera.cpp src/Grid.cpp src/Loader.cpp src/OpenGLGeo.cpp src/Shader.cpp src/ShaderManager.cpp -o sandbox ${LFLAGS}
+	${CC} ${CFLAGS} src/sandbox.c -o sandbox.o
+	${CCX} ${CXXFLAGS} src/sandbox.c src/camera.c src/main.cpp src/App.cpp src/Grid.cpp src/Loader.cpp src/OpenGLGeo.cpp src/Shader.cpp src/ShaderManager.cpp -o sandbox ${LFLAGS}
+	rm sandbox.o

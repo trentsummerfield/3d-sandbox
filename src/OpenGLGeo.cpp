@@ -26,8 +26,8 @@ OpenGLGeo::OpenGLGeo(std::vector<float> vertices,
         max.z = std::max(max.z, z);
     }
 
-    center = (max + min) / 2.f;
-    dimensions = max - min;
+    center = vec3_scale(vec3_add(max, min), 0.5f);
+    dimensions = vec3_sub(max, min);
 
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -104,5 +104,5 @@ mat4
 OpenGLGeo::unit_matrix() const
 {
     const auto scale = 1.f / std::max({ dimensions.x, dimensions.y, dimensions.z });
-    return mat4::scale(scale) * mat4::translate(-center);
+    return mat4::scale(scale) * mat4::translate(vec3_scale(center, -1.f));
 }

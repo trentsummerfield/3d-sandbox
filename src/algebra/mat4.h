@@ -89,7 +89,7 @@ class mat4
                        0.0 } };
     }
 
-    static mat4 translate(vec3 v) { return translate(v.x, v.y, v.z); }
+    static mat4 translate(struct vec3 v) { return translate(v.x, v.y, v.z); }
 
     static mat4 translate(float x, float y, float z)
     {

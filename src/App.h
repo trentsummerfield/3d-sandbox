@@ -2,7 +2,7 @@
 #include <memory>
 #include <optional>
 
-#include "Camera.h"
+#include "camera.h"
 #include "OpenGLGeo.h"
 #include "Shader.h"
 #include "ShaderManager.h"
@@ -11,7 +11,7 @@
 class App
 {
   private:
-    Camera camera;
+    struct camera camera;
 
     std::shared_ptr<ShaderManager> shader_manager;
 
